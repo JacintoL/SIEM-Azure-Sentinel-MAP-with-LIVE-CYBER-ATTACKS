@@ -19,6 +19,9 @@
 
 ### 1. Preview the Technical Steps 
 - Overview of the objectives: create virtual machines (VMs), configure logs, and collect geolocation data for attack analysis.
+ ![siem](https://github.com/user-attachments/assets/bfc5256f-aac2-43bf-86d6-72eee6aece7a)
+- We´re also going to use powershell in this lab the purpose for this is normaly like when you try to log into a windows machne and it fails you get like some information like where Ip address came from or like where the attack came from.
+- Use powershell to kind of extract the ip address from the windows log and send it to like a third party API
 
 ### 2. Create an Azure Subscription 
 - Go to [azure.com](https://azure.com) and, if necessary, create an account.
