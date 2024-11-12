@@ -1,6 +1,18 @@
-# Full Tutorial: Setting Up Azure Sentinel with Real-Time Attack Visualization
+#  Failed RDP to IP Geolocation Information
+# Description
+- The Powershell script in this repository is responsible for parsing out Windows Event Log information for failed RDP attacks and using a third party API to collect geographic information about the attackers location.
+- The script is used in this demo where I setup Azure Sentinel (SIEM) and connect it to a live virtual machine acting as a honey pot. We will observe live attacks (RDP Brute Force) from all around the world. I will use a custom PowerShell script to look up the attackers Geolocation information and plot it on an Azure Sentinel Map!
+- ![1 siem](https://github.com/user-attachments/assets/494679a9-bc6d-4e79-a29c-d1c64c8991b8)
 
-This tutorial covers how to set up **Azure Sentinel** for real-time security monitoring with geographic visualization of attacks. This guide is ideal for beginners who want to explore the capabilities of a Security Information and Event Management (SIEM) solution.
+### Languages Used
+- PowerShell: Extract RDP failed logon logs from Windows Event Viewer
+### Utilities Used
+- ipgeolocation.io: IP Address to Geolocation API
+## Attacks from China coming in; Custom logs being output with geodata
+![siem2](https://github.com/user-attachments/assets/9d530d0c-bd4f-46b5-8b42-45385be21238)
+
+## World map of incoming attacks after 24 hours (built custom logs including geodata)
+![siem3](https://github.com/user-attachments/assets/59b43b70-5e1b-4a1a-92d9-bc5c5ed8a579)
 
 ## Tutorial Steps
 
