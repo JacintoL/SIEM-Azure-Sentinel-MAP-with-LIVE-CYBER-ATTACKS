@@ -29,16 +29,27 @@
 
 ### 3. Create a Virtual Machine (VM) 
 - In the Azure portal, go to **Virtual Machines** > **Create**.
-- Choose the VM configuration, such as the operating system (Windows, in this case) and the region.
-- Finish the creation and wait for the deployment.
-
+- Create a new Resource Group for example with the name **Honeypotlab**
+- Virtual Machine name : **honeypot**
+- Operating system (Windows, in this case) and the region.
+- Administrator account choose your preference
 ### 4. Allow All Traffic Through the Firewall 
 - In the VM settings menu, go to **Networking** > **Security Settings**.
 - Configure the firewall to allow all traffic (Inbound and Outbound) to simulate external attacks.
+  
+- Network Interface: do not touch network interface instead of network security group nic put in **advanced**
+- Configure network security group : Create new network security group choose a name like **honeypot-vm-nsg** and remove all inbound rules and add a new one
+- Add inboud security rule: Just change de Destination port ranges to " * " the priority to "**100**" and Name to **DANGER_ANY_IN**
+- This essentially allow all trafic from the internet into our virtual machine 
+- Finish the creation and wait for the deployment.
+
 
 ### 5. Create a Log Analytics Workspace 
 - Go to **Azure Sentinel** > **Log Analytics Workspace** and create a new workspace.
 - This workspace will be used to store the logs and events captured by the VM and other resources.
+- Choose the resource group **Honeypotlab**
+- Name : **law-honeypot1**
+- Review and Create
 
 ### 6. Enable VM Log Collection in Security Center 
 - Go to **Azure Security Center** and locate the VM you created.
@@ -47,8 +58,15 @@
 ### 7. Connect Log Analytics Workspace to the VM 
 - In the Azure portal, go to **Log Analytics Workspace** and add the VM as a connected resource.
 - This will allow the VM to send log data directly to the workspace.
+- Go to **Pricing & settings** choose **law-honeypot1**
+- Settings| Azure Defender plans: put **Azure Defender on** AND SQL servers on machines **OFF**
+- In **Data collection** put **all Events**
+- Save
 
-### 8. Configure Azure Sentinel 
+## Back to Analystics workspaces
+- Click **law-honeypot1** then go to **Virutal machines** and just click on **connect**
+
+### 8. Configure **Azure Sentinel**
 - In the Log Analytics Workspace, enable **Azure Sentinel**.
 - Sentinel will now be active and will begin collecting data from configured sources, such as the VM’s logs.
 
